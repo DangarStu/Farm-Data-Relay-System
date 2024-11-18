@@ -35,39 +35,36 @@ coming from #2.*/
 #define LORA2_ACT      sendLoRaNbr(1);
 
 ///////////////////////////////////////////////////////////////
-// Start of Heltec V3 configuration
+// Start of Sailor Hat and Ra-01 module configuration
 ///////////////////////////////////////////////////////////////
 
-// LoRa Configuration
-#define RADIOLIB_MODULE SX1262
-#define LORA_SS    8
-#define LORA_RST   12
-#define LORA_DIO   14 // Is actually DIO1
-#define LORA_BUSY  13
-#define USE_SX126X
+// LoRa Configuration 
+#define RADIOLIB_MODULE SX1278
+#define LORA_SS    22
+#define LORA_RST   25
+#define LORA_DIO   26
+#define LORA_BUSY  13  // The SX1278 doesn't have a BUSY pin
+//#define USE_SX126X
 
-#define LORA_TXPWR 17   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
+#define LORA_TXPWR 12   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 
 //#define CUSTOM_SPI
-#define LORA_SPI_SCK  9
-#define LORA_SPI_MISO 11
-#define LORA_SPI_MOSI 10
-
-#define LORA_TXPWR 17    // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
-#define LORA_ACK        // Request LoRa acknowledgment.
+#define LORA_SPI_SCK  18
+#define LORA_SPI_MISO 19
+#define LORA_SPI_MOSI 23
 
 #define FDRS_DEBUG     // Enable USB-Serial debugging
-//#define DBG_LEVEL 0    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
+#define DBG_LEVEL 2    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
 
 // I2C - OLED or RTC
-#define I2C_SDA 17
-#define I2C_SCL 18
+#define I2C_SDA 16
+#define I2C_SCL 17
 
 // OLED -- Displays console debugging messages on an SSD1306 I²C OLED
 #define USE_OLED    
 #define OLED_HEADER "FDRS"
 #define OLED_PAGE_SECS 30
-#define OLED_RST 21
+#define OLED_RST 16
 
 // RTC - I2C
 // #define USE_RTC_DS3231
@@ -76,11 +73,11 @@ coming from #2.*/
 // #define RTC_ADDR 0x68
 
 // UART data interface pins (ESP32 only)
-#define RXD2 26
-#define TXD2 48
+#define RXD2 14
+#define TXD2 15
 
 ///////////////////////////////////////////////////////////////
-// End of Heltec V3 configuration
+// End of Sailor Hat and Ra-01 module configuration
 ///////////////////////////////////////////////////////////////
 
 /// NTP Time settings for gateways

@@ -28,33 +28,57 @@
 #define LORA1_ACT      sendLoRaNbr(2); broadcastLoRa(); 
 #define LORA2_ACT      sendLoRaNbr(1);
 
+///////////////////////////////////////////////////////////////
+// Start of Heltec V3 configuration
+///////////////////////////////////////////////////////////////
+
 // LoRa Configuration
-#define RADIOLIB_MODULE SX1276
-#define LORA_SS    18
-#define LORA_RST   14
-#define LORA_DIO   26
-#define LORA_BUSY  33
-//#define USE_SX126X
+#define RADIOLIB_MODULE SX1262
+#define LORA_SS    8
+#define LORA_RST   12
+#define LORA_DIO   14 // Is actually DIO1
+#define LORA_BUSY  13
+#define USE_SX126X
 
 #define LORA_TXPWR 17   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 
+#define FLOAT_SWITCH_PIN 45
+
+
 //#define CUSTOM_SPI
-#define LORA_SPI_SCK  5
-#define LORA_SPI_MISO 19
-#define LORA_SPI_MOSI 27
+#define LORA_SPI_SCK  9
+#define LORA_SPI_MISO 11
+#define LORA_SPI_MOSI 10
+
+#define LORA_TXPWR 17    // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
+#define LORA_ACK        // Request LoRa acknowledgment.
 
 #define FDRS_DEBUG     // Enable USB-Serial debugging
 //#define DBG_LEVEL 0    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
 
 // I2C - OLED or RTC
-#define I2C_SDA 4
-#define I2C_SCL 15
+#define I2C_SDA 17
+#define I2C_SCL 18
 
 // OLED -- Displays console debugging messages on an SSD1306 I²C OLED
-///#define USE_OLED    
+#define USE_OLED    
 #define OLED_HEADER "FDRS"
 #define OLED_PAGE_SECS 30
-#define OLED_RST 16
+#define OLED_RST 21
+
+// RTC - I2C
+// #define USE_RTC_DS3231
+// #define RTC_ADDR 0x57
+// #define USE_RTC_DS1307
+// #define RTC_ADDR 0x68
+
+// UART data interface pins (ESP32 only)
+#define RXD2 26
+#define TXD2 48
+
+///////////////////////////////////////////////////////////////
+// End of Heltec V3 configuration
+///////////////////////////////////////////////////////////////
 
 // RTC - I2C
 // #define USE_RTC_DS3231

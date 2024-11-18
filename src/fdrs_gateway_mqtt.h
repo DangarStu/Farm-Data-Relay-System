@@ -1,5 +1,7 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
+#include <sstream>
+#include <fdrs_gateway_config.h>
 
 // select MQTT server address
 #if defined(MQTT_ADDR)
@@ -60,13 +62,14 @@
 
 #define MQTT_MAX_BUFF_SIZE 1024
 
+#define TOPIC_EXPANDING
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 unsigned long lastMqttConnectAttempt = 0;
 
 const char *mqtt_server = FDRS_MQTT_ADDR;
 const int mqtt_port = FDRS_MQTT_PORT;
-
 
 #ifdef FDRS_MQTT_AUTH
 const char *mqtt_user = FDRS_MQTT_USER;
@@ -173,26 +176,71 @@ void begin_mqtt()
     client.setCallback(mqtt_callback);
 }
 
-void mqtt_publish(const char *payload)
+void mqtt_publish(const char *topic, const char *payload)
 {
-    if (!client.publish(FDRS_TOPIC_DATA, payload))
+    if (!client.publish(topic, payload))
     {
         DBG(" Error on sending MQTT");
 
     }
 }
 
+std::string floatToString(float value) {
+    std::ostringstream oss;
+
+    // Set precision and remove trailing zeros
+    oss.precision(6); // Adjust precision as needed
+    oss << std::fixed << value;
+
+    std::string result = oss.str();
+
+    // Trim trailing zeros and the decimal point if unnecessary
+    if (result.find('.') != std::string::npos) {
+        result.erase(result.find_last_not_of('0') + 1); // Remove trailing zeros
+        if (result.back() == '.') {
+            result.pop_back(); // Remove the decimal point if it's the last character
+        }
+    }
+
+    return result;
+}
+
+#ifdef TOPIC_EXPANDING
 void sendMQTT()
 {
-    DBG("Sending MQTT.");
+    DBG("Sending MQTT topics.");
+    for (int i = 0; i < ln; i++)
+    {
+        if (theData[i].id < 0 || theData[i].id >= sizeof(TOPIC_NODE) / sizeof(TOPIC_NODE[0]) ||
+            theData[i].t < 0 || theData[i].t >= sizeof(TOPIC_TYPE) / sizeof(TOPIC_TYPE[0])) {
+            DBG("Invalid index for topic.");
+            continue;
+        }
+
+        std::string topic = std::string(FDRS_TOPIC_DATA) + "/" + TOPIC_NODE[theData[i].id] + "/" + TOPIC_TYPE[theData[i].t];
+
+        // Convert the data from a float to a string to push to MQTT
+        auto data = floatToString(theData[i].d);
+
+        // Publish this data point and move on to the next.
+        mqtt_publish(topic.c_str(), (char *)data.c_str());
+    }
+
+}
+#else
+void sendMQTT()
+{
+    DBG("Sending JSON to MQTT.");
     JsonDocument doc;
     for (int i = 0; i < ln; i++)
     {
-        doc[i]["id"] = theData[i].id;
-        doc[i]["type"] = theData[i].t;
-        doc[i]["data"] = theData[i].d;
+        doc[i]["id"] = theData[i].id;       //uint16_t
+        doc[i]["type"] = theData[i].t;      //uint8_t
+        doc[i]["data"] = theData[i].d;      // float
     }
     String outgoingString;
     serializeJson(doc, outgoingString);
-    mqtt_publish((char *)outgoingString.c_str());
+    // Publish the entire JSON structure under the default FDRS data topic
+    mqtt_publish(FDRS_TOPIC_DATA, (char *)outgoingString.c_str());
 }
+#endif
