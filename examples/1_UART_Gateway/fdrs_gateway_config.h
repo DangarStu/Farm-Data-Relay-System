@@ -12,7 +12,7 @@
 
 // Interfaces
 #define USE_ESPNOW  
-//#define USE_LORA
+#define USE_LORA
 //#define USE_WIFI  // Will cause errors if used with ESP-NOW. Use a serial link instead!
 //#define USE_ETHERNET
 
@@ -41,8 +41,6 @@
 #define USE_SX126X
 
 #define LORA_TXPWR 17   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
-
-#define FLOAT_SWITCH_PIN 45
 
 //#define CUSTOM_SPI
 #define LORA_SPI_SCK  9
