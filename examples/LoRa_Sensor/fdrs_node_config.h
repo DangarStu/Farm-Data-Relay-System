@@ -15,28 +15,51 @@
 #define FDRS_DEBUG     // Enable USB-Serial debugging
 //#define DBG_LEVEL 0    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
 
-/// I2C - OLED or RTC
-#define I2C_SDA 5
-#define I2C_SCL 6
+///////////////////////////////////////////////////////////////
+// Start of Sailor Hat and Ra-01 module configuration
+///////////////////////////////////////////////////////////////
 
-// OLED -- Displays console debugging messages on an SSD1306 I²C OLED
-// #define USE_OLED    
-#define OLED_HEADER "FDRS"
-#define OLED_PAGE_SECS 30
-#define OLED_RST -1
-
-// LoRa Configuration
-#define RADIOLIB_MODULE SX1276 //Tested on SX1276
-#define LORA_SS 18
-#define LORA_RST 14
-#define LORA_DIO 26
-#define LORA_BUSY  33
+// LoRa Configuration 
+#define RADIOLIB_MODULE SX1278
+#define LORA_SS    22
+#define LORA_RST   25
+#define LORA_DIO   26
+#define LORA_BUSY  13  // The SX1278 doesn't have a BUSY pin
 //#define USE_SX126X
 
+#define LORA_TXPWR 12   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
+
 //#define CUSTOM_SPI
-#define LORA_SPI_SCK  5
+#define LORA_SPI_SCK  18
 #define LORA_SPI_MISO 19
-#define LORA_SPI_MOSI 27
+#define LORA_SPI_MOSI 23
+
+#define FDRS_DEBUG     // Enable USB-Serial debugging
+#define DBG_LEVEL 2    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
+
+// I2C - OLED or RTC
+#define I2C_SDA 16
+#define I2C_SCL 17
+
+// OLED -- Displays console debugging messages on an SSD1306 I²C OLED
+#define USE_OLED    
+#define OLED_HEADER "FDRS"
+#define OLED_PAGE_SECS 30
+#define OLED_RST 16
+
+// RTC - I2C
+// #define USE_RTC_DS3231
+// #define RTC_ADDR 0x57
+// #define USE_RTC_DS1307
+// #define RTC_ADDR 0x68
+
+// UART data interface pins (ESP32 only)
+#define RXD2 14
+#define TXD2 15
+
+///////////////////////////////////////////////////////////////
+// End of Sailor Hat and Ra-01 module configuration
+///////////////////////////////////////////////////////////////
 
 #define LORA_TXPWR 17    // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 #define LORA_ACK        // Request LoRa acknowledgment.
