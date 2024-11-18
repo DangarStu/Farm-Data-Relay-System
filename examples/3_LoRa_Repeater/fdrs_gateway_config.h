@@ -42,9 +42,6 @@
 
 #define LORA_TXPWR 17   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 
-#define FLOAT_SWITCH_PIN 45
-
-
 //#define CUSTOM_SPI
 #define LORA_SPI_SCK  9
 #define LORA_SPI_MISO 11
@@ -66,12 +63,6 @@
 #define OLED_PAGE_SECS 30
 #define OLED_RST 21
 
-// RTC - I2C
-// #define USE_RTC_DS3231
-// #define RTC_ADDR 0x57
-// #define USE_RTC_DS1307
-// #define RTC_ADDR 0x68
-
 // UART data interface pins (ESP32 only)
 #define RXD2 26
 #define TXD2 48
@@ -79,40 +70,6 @@
 ///////////////////////////////////////////////////////////////
 // End of Heltec V3 configuration
 ///////////////////////////////////////////////////////////////
-
-// RTC - I2C
-// #define USE_RTC_DS3231
-// #define RTC_ADDR 0x57
-// #define USE_RTC_DS1307
-// #define RTC_ADDR 0x68
-
-// UART data interface pins (ESP32 only)
-//#define RXD2 14
-//#define TXD2 15
-
-//#define USE_LR  // Use ESP-NOW LR mode (ESP32 only)
-
-// WiFi and MQTT Credentials  -- These will override the global settings
-//#define WIFI_SSID   "Your SSID"  
-//#define WIFI_PASS   "Your Password"
-
-// Use Static IP Address for WiFi connections
-// #define USE_STATIC_IPADDRESS     
-// #define HOST_IPADDRESS      "192.168.0.100"
-// #define GW_IPADDRESS        "192.168.0.1"
-// #define SUBNET_ADDRESS      "255.255.255.0"
-// #define DNS1_IPADDRESS      "192.168.0.1"    
-// #define DNS2_IPADDRESS      "192.168.0.2"  
-
-// MQTT Settings
-// #define MQTT_ADDR   "192.168.0.8"
-// #define MQTT_PORT   1883 // Default MQTT port is 1883
-// #define MQTT_AUTH   //Enable MQTT authentication 
-// #define MQTT_USER   "Your MQTT Username"
-// #define MQTT_PASS   "Your MQTT Password"
-// #define TOPIC_DATA    "fdrs/data"
-// #define TOPIC_STATUS  "fdrs/status"
-// #define TOPIC_COMMAND "fdrs/command"
 
 /// NTP Time settings for gateways
 #define DST_RULE        USDST // Daylight saving time rules: Use USDST for United States DST rules, EUDST for European Union
