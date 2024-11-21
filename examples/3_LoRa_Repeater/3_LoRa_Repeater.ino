@@ -8,7 +8,7 @@
 #include "fdrs_gateway_config.h"
 #include <fdrs_gateway.h>
 
-#define INTERVAL_SECONDS      30
+#define INTERVAL_SECONDS      60 * 60 * 1000
 #define BATTERY_VOLTAGE_PIN   7 
 
 void sendReading() {
@@ -21,7 +21,7 @@ void sendReading() {
 
 void setup() {
   beginFDRS();
-  scheduleFDRS(sendReading, INTERVAL_SECONDS * 1000);
+  scheduleFDRS(sendReading, INTERVAL_SECONDS);
 }
 
 void loop() {
