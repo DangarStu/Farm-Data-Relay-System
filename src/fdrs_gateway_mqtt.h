@@ -211,14 +211,15 @@ void sendMQTT()
     DBG("Sending MQTT topics.");
     for (int i = 0; i < ln; i++)
     {
-        if (theData[i].id < 0 || theData[i].id >= sizeof(TOPIC_NODE) / sizeof(TOPIC_NODE[0]) {
+        if (theData[i].id < 0 || theData[i].id >= sizeof(TOPIC_NODE) / sizeof(TOPIC_NODE[0])) {
             DBG("Invalid index for node: " + theData[i].id);
             continue;
         }
-        if ( theData[i].t < 0 || theData[i].t >= sizeof(TOPIC_TYPE) / sizeof(TOPIC_TYPE[0])) {
+        if (theData[i].t < 0 || theData[i].t >= sizeof(TOPIC_TYPE) / sizeof(TOPIC_TYPE[0])) {
             DBG("Invalid index for topic: " + theData[i].t);
             continue;
         }
+
 
         std::string topic = std::string(FDRS_TOPIC_DATA) + "/" + TOPIC_NODE[theData[i].id] + "/" + TOPIC_TYPE[theData[i].t];
 
