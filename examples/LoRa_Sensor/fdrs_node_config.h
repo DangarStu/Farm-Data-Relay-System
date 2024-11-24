@@ -1,39 +1,18 @@
 //  FARM DATA RELAY SYSTEM
 //
-//  GATEWAY CONFIGURATION
+//  NODE CONFIGURATION
 
 //Addresses
 #define READING_ID    2   //Unique ID for this sensor
 #define GTWY_MAC      0x03 //Address of the nearest gateway
-#define INTERVAL_SECONDS    23
-#define FLOAT_SWITCH_PIN  35
-/*
-A repeater's routing options should be defined so that messages
-coming away from the front-end (controller messages) are coming
-from neighbor #1, and data heading towards the front-end are
-coming from #2.*/
-//#define ESPNOW_NEIGHBOR_1  0x03  // Address of ESP-NOW neighbor #1
-#define ESPNOW_NEIGHBOR_2  0x05  // Address of ESP-NOW neighbor #2
-//#define LORA_NEIGHBOR_1    0x01  // Address of LoRa neighbor #1
-//#define LORA_NEIGHBOR_2    0x99  // Address of LoRa neighbor #2
+
+#define DEEP_SLEEP
 
 // Interfaces
 #define USE_ESPNOW  
 //#define USE_LORA
 //#define USE_WIFI  // Will cause errors if used with ESP-NOW. Use a serial link instead!
 //#define USE_ETHERNET
-
-// Routing
-// Options: sendESPNowNbr(1 or 2); sendESPNowPeers(); sendLoRaNbr(1 or 2); broadcastLoRa(); sendSerial(); sendMQTT();
-#define ESPNOWG_ACT    
-#define LORAG_ACT
-#define SERIAL_ACT     
-#define MQTT_ACT          
-#define INTERNAL_ACT   sendESPNowNbr(1);
-#define ESPNOW1_ACT    
-#define ESPNOW2_ACT                    
-#define LORA1_ACT      
-#define LORA2_ACT   
 
 ///////////////////////////////////////////////////////////////
 // Start of Sailor Hat and Ra-01 module configuration
