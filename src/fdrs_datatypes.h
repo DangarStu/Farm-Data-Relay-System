@@ -156,5 +156,6 @@ typedef int esp_err_t;
 #define ENERGY2_T       33 // Energy #2
 #define WEIGHT_T        34 // Weight
 #define WEIGHT2_T       35 // Weight #2
+#define FLOAT_SWITCH    36 // High water
 
 #endif //FDRS_DATA_TYPES
