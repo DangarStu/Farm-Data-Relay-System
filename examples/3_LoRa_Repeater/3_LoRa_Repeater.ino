@@ -8,11 +8,11 @@
 #include "fdrs_gateway_config.h"
 #include <fdrs_gateway.h>
 
-#define INTERVAL_SECONDS      60 * 60 * 1000
+#define INTERVAL_SECONDS      15 * 60 * 1000
 #define BATTERY_VOLTAGE_PIN   7 
 
 void sendReading() {
-  float batteryLevel = map(analogRead(BATTERY_VOLTAGE_PIN), 0.0f, 4095.0f, 0, 100);
+  float batteryLevel = map(analogRead(BATTERY_VOLTAGE_PIN), 0.0f, 3983.0f, 0, 4.2);
   DBG("Pin reads " + String(analogRead(BATTERY_VOLTAGE_PIN)));
   DBG("Battery level is " + String(batteryLevel));
   loadFDRS(batteryLevel, VOLTAGE_T, UNIT_MAC);
@@ -21,6 +21,7 @@ void sendReading() {
 
 void setup() {
   beginFDRS();
+  sendReading();
   scheduleFDRS(sendReading, INTERVAL_SECONDS);
 }
 

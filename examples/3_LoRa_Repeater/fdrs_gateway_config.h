@@ -11,19 +11,19 @@
 #define LORA_NEIGHBOR_2    0x05  // Address of LoRa neighbor #2
 
 // Interfaces
-//#define USE_ESPNOW  
+#define USE_ESPNOW  
 #define USE_LORA
 //#define USE_WIFI  // Will cause errors if used with ESP-NOW. Use a serial link instead!
 //#define USE_ETHERNET
 
 // Routing
 // Options: sendESPNowNbr(1 or 2); sendESPNowPeers(); sendLoRaNbr(1 or 2); broadcastLoRa(); sendSerial(); sendMQTT();
-#define ESPNOWG_ACT    
+#define ESPNOWG_ACT    sendLoRaNbr(1);
 #define LORAG_ACT      sendLoRaNbr(1);
 #define SERIAL_ACT     
 #define MQTT_ACT          
 #define INTERNAL_ACT   sendLoRaNbr(1);
-#define ESPNOW1_ACT    
+#define ESPNOW1_ACT    sendLoRaNbr(1);
 #define ESPNOW2_ACT                    
 #define LORA1_ACT      sendLoRaNbr(2); broadcastLoRa(); 
 #define LORA2_ACT      sendLoRaNbr(1);

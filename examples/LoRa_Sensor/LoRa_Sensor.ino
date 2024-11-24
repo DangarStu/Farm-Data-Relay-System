@@ -12,6 +12,7 @@
 #include "DFRobot_INA219.h"
 
 #define FLOAT_SWITCH_PIN  35
+#define FLOAT_SWITCH      36
 
 float data1;
 float switchState = 0; 
