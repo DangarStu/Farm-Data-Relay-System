@@ -3,7 +3,7 @@
 //  GATEWAY CONFIGURATION
 
 //Addresses
-#define READING_ID    42   //Unique ID for this sensor
+#define READING_ID    2   //Unique ID for this sensor
 #define GTWY_MAC      0x03 //Address of the nearest gateway
 #define INTERVAL_SECONDS    23
 #define FLOAT_SWITCH_PIN  35

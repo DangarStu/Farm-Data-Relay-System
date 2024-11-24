@@ -189,13 +189,13 @@ bool sendFDRS()
   if (esp_now_ack_flag == CRC_OK)
   {
     data_count = 0;
-    DBG1("FDRS Packet sent successfully!");
+    DBG1("ESPNOW Packet sent successfully!");
     return true;
   }
   else
   {
     data_count = 0;
-    DBG1("FDRS Packet send failed!");
+    DBG1("ESPNOW Packet send failed!");
     return false;
   }
 #endif // USE_ESPNOW
@@ -205,17 +205,17 @@ bool sendFDRS()
   DBG(" LoRa sent.");
   if(crcReturned == CRC_OK) {
     data_count = 0;
-    DBG1("FDRS Packet sent successfully!");
+    DBG1("LORA Packet sent successfully!");
     return true;
   }
   else if(ack == false && crcReturned == CRC_NULL) {
     data_count = 0;
-    DBG1("FDRS Packet sent successfully!");
+    DBG1("LORA Packet sent successfully!");
     return true;
   }
   else {
     data_count = 0;
-    DBG1("FDRS Packet send failed!");
+    DBG1("LORA Packet send failed!");
     return false;
   }
 #endif // USE_LORA

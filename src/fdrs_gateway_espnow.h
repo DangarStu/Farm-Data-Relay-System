@@ -413,7 +413,7 @@ esp_err_t sendESPNow(uint8_t *dest, DataReading *data) {
           i += espnow_size;
         }
         else {
-          // Send failed!
+          DBG("ESPNOW send result not OK");
           delay(10);
           return sendResult;
         }
@@ -424,7 +424,7 @@ esp_err_t sendESPNow(uint8_t *dest, DataReading *data) {
           ln = 0;
         }
         else {
-          // Send Failed!
+          DBG("ESPNOW send result not OK");
           delay(10);
           return sendResult;
         }

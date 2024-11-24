@@ -12,9 +12,10 @@
 #define BATTERY_VOLTAGE_PIN   7 
 
 void sendReading() {
-  float batteryLevel = map(analogRead(BATTERY_VOLTAGE_PIN), 0.0f, 3983.0f, 0, 4.2);
-  DBG("Pin reads " + String(analogRead(BATTERY_VOLTAGE_PIN)));
-  DBG("Battery level is " + String(batteryLevel));
+  int rawADC = analogRead(BATTERY_VOLTAGE_PIN);
+  DBG("Pin reads " + String(rawADC));
+  float batteryLevel = rawADC * (4.2f / 3983.0f);
+  DBG("Battery voltage is " + String(batteryLevel));
   loadFDRS(batteryLevel, VOLTAGE_T, UNIT_MAC);
   sendFDRS();
 }

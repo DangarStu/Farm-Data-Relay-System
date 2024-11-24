@@ -25,8 +25,6 @@ float ina219Reading_mA = 1000;
 float extMeterReading_mA = 1000;
 
 void setup() {
-
-
   pinMode(FLOAT_SWITCH_PIN, INPUT_PULLDOWN);
   analogReadResolution(12); // Set ADC resolution to 12 bits
   beginFDRS();
@@ -48,7 +46,7 @@ void loop() {
   float batteryVoltage = readBatteryVoltage();
   loadFDRS(batteryVoltage, VOLTAGE_T);
   sendFDRS();
-  sleepFDRS(10);  //Sleep time in seconds
+  sleepFDRS(5 * 60);  //Sleep time in seconds
 }
 
 float readBatteryVoltage() {
