@@ -28,6 +28,22 @@ void setup() {
   pinMode(FLOAT_SWITCH_PIN, INPUT_PULLDOWN);
   analogReadResolution(12); // Set ADC resolution to 12 bits
   beginFDRS();
+   byte count = 0;
+      for (byte address = 8; address < 120; address++) {
+        Wire.beginTransmission(address);
+        if (Wire.endTransmission() == 0) {
+            DBG("I2C device found at address 0x");
+            DBG(address);
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        DBG("No I2C devices found.");
+    } else {
+        DBG("I2C scan complete.");
+    }
+
   //Initialize the voltage and current sensor
   while(ina219.begin() != true) {
       DBG("INA219 begin failed");
