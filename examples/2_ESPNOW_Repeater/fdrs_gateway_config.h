@@ -3,7 +3,7 @@
 //  GATEWAY CONFIGURATION
 
 //Addresses
-#define UNIT_MAC           0x02  // The address of this gateway
+#define UNIT_MAC           0x03  // The address of this gateway
 
 #define ESPNOW_NEIGHBOR_1  0x01  // Address of ESP-NOW neighbor #1
 #define ESPNOW_NEIGHBOR_2  0x04  // Address of ESP-NOW neighbor #2

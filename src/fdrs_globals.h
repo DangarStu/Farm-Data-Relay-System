@@ -37,8 +37,8 @@
 constexpr std::string TOPIC_NODE[] = {
     "MQTTGateway",        // 0
     "UARTGateway",        // 1
-    "Boat",               // 2
-    "LoRaRepeater",       // 3
+    "LoRaRepeater",               // 2
+    "ESPNOWRepeater",       // 3
     // Add more strings as needed
 };
 

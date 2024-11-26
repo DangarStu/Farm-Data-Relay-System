@@ -9,7 +9,7 @@
 #include <fdrs_gateway.h>
 
 #define INTERVAL_SECONDS      15 * 60 * 1000
-#define BATTERY_VOLTAGE_PIN   7 
+#define BATTERY_VOLTAGE_PIN   35 
 
 void sendReading() {
   int rawADC = analogRead(BATTERY_VOLTAGE_PIN);

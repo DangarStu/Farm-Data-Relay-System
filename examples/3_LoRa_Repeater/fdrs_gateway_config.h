@@ -3,49 +3,51 @@
 //  GATEWAY CONFIGURATION
 
 //Addresses
-#define UNIT_MAC           0x03  // The address of this gateway
+#define UNIT_MAC           0x02  // The address of this gateway
 
 #define ESPNOW_NEIGHBOR_1  0x00  // Address of ESP-NOW neighbor #1
 #define ESPNOW_NEIGHBOR_2  0x00  // Address of ESP-NOW neighbor #2
 #define LORA_NEIGHBOR_1    0x01  // Address of LoRa neighbor #1
-#define LORA_NEIGHBOR_2    0x05  // Address of LoRa neighbor #2
+#define LORA_NEIGHBOR_2    0x03  // Address of LoRa neighbor #2
 
 // Interfaces
-#define USE_ESPNOW  
+//#define USE_ESPNOW  
 #define USE_LORA
 //#define USE_WIFI  // Will cause errors if used with ESP-NOW. Use a serial link instead!
 //#define USE_ETHERNET
 
 // Routing
 // Options: sendESPNowNbr(1 or 2); sendESPNowPeers(); sendLoRaNbr(1 or 2); broadcastLoRa(); sendSerial(); sendMQTT();
-#define ESPNOWG_ACT    sendLoRaNbr(1);
+#define ESPNOWG_ACT
 #define LORAG_ACT      sendLoRaNbr(1);
 #define SERIAL_ACT     
 #define MQTT_ACT          
 #define INTERNAL_ACT   sendLoRaNbr(1);
-#define ESPNOW1_ACT    sendLoRaNbr(1);
+#define ESPNOW1_ACT
 #define ESPNOW2_ACT                    
 #define LORA1_ACT      sendLoRaNbr(2); broadcastLoRa(); 
 #define LORA2_ACT      sendLoRaNbr(1);
 
 ///////////////////////////////////////////////////////////////
-// Start of Heltec V3 configuration
+// Start of configuration for Lilygo TTGO LoRa32-OLED
 ///////////////////////////////////////////////////////////////
 
 // LoRa Configuration
-#define RADIOLIB_MODULE SX1262
-#define LORA_SS    8
-#define LORA_RST   12
-#define LORA_DIO   14 // Is actually DIO1
-#define LORA_BUSY  13
-#define USE_SX126X
+#define RADIOLIB_MODULE SX1276
+#define LORA_SS    18
+#define LORA_RST   14
+#define LORA_DIO   26
+#define LORA_BUSY  33
+//#define USE_SX126X
 
 #define LORA_TXPWR 17   // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 
+#define FLOAT_SWITCH_PIN 45
+
 //#define CUSTOM_SPI
-#define LORA_SPI_SCK  9
-#define LORA_SPI_MISO 11
-#define LORA_SPI_MOSI 10
+#define LORA_SPI_SCK  5
+#define LORA_SPI_MISO 19
+#define LORA_SPI_MOSI 27
 
 #define LORA_TXPWR 17    // LoRa TX power in dBm (: +2dBm - +17dBm (for SX1276-7) +20dBm (for SX1278))
 #define LORA_ACK        // Request LoRa acknowledgment.
@@ -54,21 +56,17 @@
 //#define DBG_LEVEL 0    // 0 for minimal messaging, 1 for troubleshooting, 2 for development
 
 // I2C - OLED or RTC
-#define I2C_SDA 17
-#define I2C_SCL 18
+#define I2C_SDA 21
+#define I2C_SCL 22
 
 // OLED -- Displays console debugging messages on an SSD1306 I²C OLED
-//#define USE_OLED    
+#define USE_OLED    
 #define OLED_HEADER "FDRS"
 #define OLED_PAGE_SECS 30
-#define OLED_RST 21
-
-// UART data interface pins (ESP32 only)
-#define RXD2 26
-#define TXD2 48
+#define OLED_RST -1
 
 ///////////////////////////////////////////////////////////////
-// End of Heltec V3 configuration
+// End of configuration for Lilygo TTGO LoRa32-OLED
 ///////////////////////////////////////////////////////////////
 
 /// NTP Time settings for gateways
