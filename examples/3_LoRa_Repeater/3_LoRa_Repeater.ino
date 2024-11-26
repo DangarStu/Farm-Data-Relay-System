@@ -22,6 +22,11 @@ void sendReading() {
 
 void setup() {
   beginFDRS();
+
+    // Configure ADC
+  analogReadResolution(12);             // Set resolution to 12 bits
+  analogSetAttenuation(ADC_11db);       // Set attenuation for 0V to 3.9V range
+  
   sendReading();
   scheduleFDRS(sendReading, INTERVAL_SECONDS);
 }

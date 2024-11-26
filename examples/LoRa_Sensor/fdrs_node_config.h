@@ -3,7 +3,7 @@
 //  NODE CONFIGURATION
 
 //Addresses
-#define READING_ID    2   //Unique ID for this sensor
+#define READING_ID    4   //Unique ID for this sensor
 #define GTWY_MAC      0x03 //Address of the nearest gateway
 
 #define DEEP_SLEEP
@@ -41,7 +41,7 @@
 #define I2C_SCL 17
 
 // OLED -- Displays console debugging messages on an SSD1306 I²C OLED
-#define USE_OLED    
+//#define USE_OLED    
 #define OLED_HEADER "FDRS"
 #define OLED_PAGE_SECS 30
 #define OLED_RST 16

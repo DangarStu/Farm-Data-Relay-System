@@ -8,7 +8,7 @@
 #define ESPNOW_NEIGHBOR_1  0x00  // Address of ESP-NOW neighbor #1
 #define ESPNOW_NEIGHBOR_2  0x02  // Address of ESP-NOW neighbor #2
 #define LORA_NEIGHBOR_1    0x00  // Address of LoRa neighbor #1
-#define LORA_NEIGHBOR_2    0x03  // Address of LoRa neighbor #2
+#define LORA_NEIGHBOR_2    0x02  // Address of LoRa neighbor #2
 
 // Interfaces
 #define USE_ESPNOW  

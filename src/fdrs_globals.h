@@ -35,13 +35,13 @@
 // others are needed to give the sensor its correct index in the
 // array.
 constexpr std::string TOPIC_NODE[] = {
-    "MQTTGateway",        // 0
-    "UARTGateway",        // 1
-    "LoRaRepeater",               // 2
+    "MQTTGateway",          // 0
+    "UARTGateway",          // 1
+    "LoRaRepeater",         // 2
     "ESPNOWRepeater",       // 3
+    "Renko"                 // 4
     // Add more strings as needed
 };
-
 // Define an array of strings that gives names to each of
 // the data types, feel free to add new ones to the end
 constexpr std::string TOPIC_TYPE[] = {
